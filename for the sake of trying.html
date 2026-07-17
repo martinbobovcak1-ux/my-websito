@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://127.0.0.1:5500/index.html/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for the sake of trying</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #88a190;
+            text-align: center;
+        }
+
+        header {
+            background-color: #5e0707;
+            color: rgb(220, 120, 120);
+            padding: 1.5rem;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        #counter {
+            font-size: 3.5rem;
+            margin: 30px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* This is the NORMAL look of every button */
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: rgb(255, 3, 3);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* This is what happens when your MOUSE HOVERS over the button */
+        button:hover {
+            background-color: #1659a1;
+        }
+
+        /* This is what happens the MOMENT you click it */
+        button:active {
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>My beloved website</h1>
+</header>
+
+<main>
+    <h2>Click for love to mig</h2>
+    <div id="counter">0</div>
+
+    <!-- Both buttons live here, in the body, so they show up on the page -->
+    <button id="incrementBtn">+10</button>
+    <button id="resetBtn">Reset</button>
+</main>
+
+<script>
+    // Wait until the page has fully loaded before running any code
+    document.addEventListener("DOMContentLoaded", function () {
+
+        let count = 0; // this is our "memory" of the current number
+
+        // Grab the pieces of the page we need to control
+        const counterDisplay = document.getElementById('counter');
+        const incrementBtn = document.getElementById('incrementBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+        // When +10 is clicked: add 10, then show the new number
+        incrementBtn.addEventListener('click', function() {
+            count += 10;
+            counterDisplay.textContent = count;
+        });
+
+        // When Reset is clicked: set number back to 0, then show it
+        resetBtn.addEventListener('click', function() {
+            count = 0;
+            counterDisplay.textContent = count;
+        });
+
+    });
+</script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
